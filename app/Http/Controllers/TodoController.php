@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use app\Models\Todo;
 
 class TodoController extends Controller
 {
@@ -27,7 +28,8 @@ class TodoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $todo = Todo::create($request->only('title'));
+        return response()->json(['todo' => $todo]);
     }
 
     /**
